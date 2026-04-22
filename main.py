@@ -28,6 +28,8 @@ options = HandLandmarkerOptions(
 )
 #==========================================================================================================
 
+WIDTH = 640
+HEIGHT = 480
 points = set()
 
 #start MediaPipe model
@@ -80,7 +82,7 @@ with HandLandmarker.create_from_options(options) as landmarker:
             hand_vertexes = result.hand_landmarks[0]
             finger_tip = hand_vertexes[4] #thumb tip
             finger_tip = hand_vertexes[8] #index_tip
-            points.add((int(finger_tip.x*640), int(finger_tip.y*480)))
+            points.add((int(finger_tip.x*WIDTH), int(finger_tip.y*HEIGHT)))
             
             
             #only popping up if there are hands.
